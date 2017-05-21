@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from __future__ import unicode_literals
+
 
 import string
 from pprint import pprint, pformat
@@ -50,7 +50,7 @@ class InterlinearText(object):
             self.lines.append(tokens)
 
         def reformat(self):
-            return zip(*self.lines)
+            return list(zip(*self.lines))
 
         def set_final(self, line):
             self.final = line
@@ -71,8 +71,8 @@ class InterlinearText(object):
         self.text_blocks = []
 
     def _check_final(self, il, lines):
-        quotes = (u'"', u"'", u'`', u'«', u'»')
-        special_final = u''
+        quotes = ('"', "'", '`', '«', '»')
+        special_final = ''
         if lines[-1][0] in quotes:
             special_final = lines[-1]
             lines = lines[:-1]
